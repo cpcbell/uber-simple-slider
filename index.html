@@ -1,0 +1,213 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UBER Simple Slider</title>
+    <script src="/f5/js/modernizr.js"></script>
+
+<style type="text/css">
+
+.parent-div{
+
+	font-family: Arial, sans-serif;
+	text-align: center;
+	margin: 0 auto;
+}
+.header{
+	text-align: center;
+	margin: 0 auto;
+}
+
+.main-img{
+	position: relative;
+	
+	margin: 0 auto;
+	text-align: center;
+
+	width: 800px;
+	height: 600px;
+	overflow: hidden;
+	
+	max-height: 600px;
+
+	font-family: Verdana, sans-serif;
+}
+.main-img ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+}
+.main-img li{
+	margin: 0;
+	padding: 0;
+	border: 1px solid #222222;
+}
+.main-img > ul > li{
+	display: none;
+}
+.main-img > ul > .active{
+	display: inline-block;
+	vertical-align: middle;
+}
+.main-img > ul > li > img{
+	border: none;
+	margin: 0;
+	padding: 0;
+	min-width: 800px;
+	width: 800px;
+	height: 600px;
+
+}
+.main-img > ul > li > div{
+
+	width: 100%;
+
+	padding: 4px 10px 10px 10px;
+	
+	font-size: 1em;
+	color: #222222;
+	position: absolute;
+	bottom: 0;
+	background-color: rgba(255,255,255,0.5);
+
+	text-align: left;
+}
+.main-img > ul > li > div > h2{
+	font-size: 1.25em;
+	margin: 0;
+	padding: 2px 0 2px 10px;
+}
+.main-img > ul > li > div > p{
+	padding: 2px 0 2px 10px;
+	margin: 0;
+	text-align: justify;
+}
+.main-img > .slide-click{
+	position: absolute; 
+	top: 260px; 
+
+	text-align: center;
+	z-index: 10;
+	font-size: 2.4em;
+	padding: 0;
+	margin: 0;
+
+	height:45px;
+     	width:45px;
+     	border-radius: 45px;
+     	-moz-border-radius: 45px;
+     	-webkit-border-radius: 45px;
+
+	background-color: rgba(255,255,255,0.5);
+}
+.click-left{
+	left: 2px;
+}
+.click-right{
+	right: 2px;
+}
+
+</style>
+
+  </head>
+  <body>
+
+<div class="parent-div"> 
+
+<div class="header">
+<h1>Uber Simple Slider</h1>
+
+<h2>Fantasy Football Super Picks</h2>
+</div>
+
+<div class="main-img">
+
+<div class="slide-click click-left">
+&#171;
+</div>
+
+<div class="slide-click click-right">
+&#187;
+</div>
+
+<ul >
+	<li class="active">
+        <img src="http://foundwalls.com/wp-content/uploads/2012/12/Carolina-Panthers-american-football-rookie-quarterback-Cam-newton.jpg" alt="slide 1">
+	<div><h2>Cam Newton</h2><p>Cam has had another awesome year.</p></div>
+
+	<li>
+        <img src="http://static4.businessinsider.com/image/5032454669beddf96a000003/andrew-luck-is-making-the-colts-look-really-smart-for-getting-rid-of-peyton-manning.jpg" alt="slide 2">
+	<div><h2>Andrew Luck</h2><p>Not too shabby at all.</p></div>
+
+	<li>
+        <img src="http://images.sportinglife.com/13/09/800x600/Rashad-Jennings-Oakland-Raiders_3004293.jpg" alt="slide 3">
+	<div><h2>Rashad Jennings</h2><p>Keep an eye on this guy.</p></div>
+
+ 	<li>
+        <img src="http://images.sportinglife.com/13/11/800x600/Antonio-Brown-TD-v-Cleveland_3041363.jpg" alt="slide 4">
+	<div><h2>Antonio Brown</h2><p>You have to play this beast.</p></div>
+</ul>
+</div>
+
+</div>
+
+    <script src="/f5/js/jquery.js"></script>
+	<!--
+	Add FX
+    <script src="/jquery-ui/js/jquery-ui-1.10.3.custom.min.js"></script>
+	-->
+	
+    <script type="text/javascript">
+
+	jQuery(document).ready(function($){
+
+	$('.slide-click').on('click',function(){
+			
+		var activeLi = $('.main-img').find('.active');
+
+		var prevLi = activeLi.prev();
+
+		var nextLi = activeLi.next();
+
+		$('.main-img > ul > li').removeClass('active');
+
+		if( $(this).hasClass('click-right') ){
+
+			if(nextLi.find('img').prop('src')){
+
+				nextLi.addClass('active').effect('bounce','slow');
+			}
+			else{
+				$('.main-img li:first').addClass('active');
+				/**
+				Add FX
+				$('.main-img li:first').addClass('active').effect('bounce','slow');
+				*/
+			}
+
+		}
+		else{
+
+			if(prevLi.find('img').prop('src')){
+
+				prevLi.addClass('active');
+			}
+			else{
+				$('.main-img li:last').addClass('active');
+				/**
+				Add FX
+				$('.main-img li:last').addClass('active').effect('bounce','slow');
+				*/
+			}
+
+		}
+        });
+
+        });
+
+    </script>
+
+  </body>
+</html>
